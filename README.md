@@ -1,23 +1,33 @@
-# Caching r/Place 2022
+# `place-scraper`
 
-This project is live at [place.thatguyalex.com](https://place.thatguyalex.com).
+This is a repository that hosts the scraper of the r/place canvas, utilized for The 2023 r/place Atlas.
 
-## Running scraper locally
+This is based upon https://github.com/ProstoSanja/place-2022, adapted to output images to be used on the Atlas.
 
-- Install Python and all dependencies from `scraper.py` imports
+The scraper results are uploaded on https://archive.org/details/place-atlas-2023-scraped-canvas. Keep in mind that the script is continuously adjusted until `images5`, which is the state of the code that is uploaded in this repository.
 
-- Edit `authparams.py` with your reddit username and password, and then add an oauth app of type `script` 
+## Usage
 
-- Field `AUTH_TOKEN` can be left empty, it is used for manual overrides
+1. Install Python (recommended: 3.10) and all the required dependencies.
 
-- Run `scraper.py`
+   ```sh
+   pip install -r scraper/requirements.txt
+   ```
 
-## Running website locally
+2. Edit `authparams.py` with your Reddit accounts credentials and the application credentials of the type `script`.
 
-- Install nodejs and NPM
+   ```python
+   USERNAME=""      # Account username
+   PASSWORD=""      # Account password
+   OAUTH_CLIENT=""  # Application client ID (below "personal  use script")
+   OAUTH_SECRET=""  # Application secret
+   AUTH_TOKEN=""    # For manual overrides, may be left empty
+   ```
 
-- Run `npm install` and then `npm start`
+3. If needed, configure fetch interval inside the script.
 
-- Open [http://localhost:3000](http://localhost:3000)
+4. Run `scraper/scraper.py`
 
-## Pull requests and suggestions welcome
+   ```
+   python scraper/scraper.py
+   ```
